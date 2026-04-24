@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 
 document.getElementById("logoutn").addEventListener('click', function(e){
-    sessionStorage.clear();
-    localStorage.clear();
+    // sessionStorage.clear();
+    // localStorage.clear();
     window.location.replace("Login.html");
 
 });
