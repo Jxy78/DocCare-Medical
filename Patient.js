@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded',function(){
 document.getElementById("logoutn").addEventListener('click', function(e){
     sessionStorage.clear();
     localStorage.clear();
-    window.location.replace("login.html");
+    window.location.replace("Login.html");
 
 });
 
