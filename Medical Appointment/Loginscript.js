@@ -130,7 +130,7 @@ listPatients();
           switch (role) {
             case 'Admin':  return redirect('AdminIndex.html');
             case 'Doctor': return redirect('DoctorIndex.html');
-            default:       return redirect('Index.html');
+            default:       return redirect('index.html');
     }
             
   }
