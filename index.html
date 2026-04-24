@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocCare - Doctor Appointment System</title>
+    <link rel="stylesheet" href="Patient-stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container" >
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <span>DocCare</span>
+            </div>
+            <ul class="nav-links" >
+                <li><a href="#home">Home</a></li>
+                <li><a href="#doctors">Doctors</a></li>
+                <li><a href="#appointments">Book Appointment</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                
+                    <a href="Login.html" >
+                        <button class="btn btn-outline"id="logbt">Login</button>
+                    </a>
+
+                    <a href="Register.html">
+                        <button class="btn btn-primary" id="regbt">Sign Up</button>
+                    </a>
+
+                    
+                     <div class="alert-wrapper" id="alert-wrapper">
+                        <div class="alert-icon">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="alert-count" id="alert-count">5</span>
+                        </div>
+                    </div>
+                     <div class="profile" style="display: none;" id="profile">
+                        <img src="./Images/Designer.png" id="propic"/>
+                        
+                     </div>
+
+                     <div class="name-role">
+                        <p id="nametag" > </p>
+                        <p id="prole" style="display: none;">Patient</p>
+                     </div>
+                     
+
+                  
+                     
+            </div>
+
+           
+
+            </div>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in">Your Health is Our Priority</h1>
+                <p class="fade-in delay-1">Book appointments with top doctors instantly. Quality healthcare at your fingertips.</p>
+                <div class="hero-buttons fade-in delay-2">
+                    <a href="#appointments"> <button class="btn btn-primary" id="bookbt">Book Appointment</button></a>
+                    <a href="#doctors"> <button class="btn btn-outline" id="viewdocbt">View Doctors</button> </a>
+                </div>
+                <div class="hero-stats fade-in delay-3">
+                    <div class="stat">
+                        <span class="counter" data-target="150">45</span>
+                        <span>+</span>
+                        <p>Expert Doctors</p>
+                    </div>
+                    <div class="stat">
+                        <span class="counter" data-target="5000">12,000</span>
+                        <span>+</span>
+                        <p>Happy Patients</p>
+                    </div>
+                    <div class="stat">
+                        <span class="counter" data-target="15">15</span>
+                        <span>+</span>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image fade-in">
+                <div class="hero-card">
+                    <div class="doctor-preview">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="floating-card card-1">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Appointment Confirmed</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-star"></i>
+                        <span>4.9 Rating</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section id="doctors" class="doctors">
+    <div class="container" id="doc_con">
+        <div class="section-header">
+            <h2>Find Your Doctor</h2>
+            <p>Search and book appointments with our expert medical professionals</p>
+        </div>
+        
+        <div class="doctors-wrapper">
+            <!-- Doctors List Panel (Full Width) -->
+            <div class="doctors-list-panel">
+                <div class="search-section">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="doctorSearch" placeholder="Search doctors by name or specialty...">
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="Pediatrician">Pediatrician</button>
+                        <button class="filter-btn" data-filter="Cardiologist">Cardiologist</button>
+                        <button class="filter-btn" data-filter="Dermatologist">Dermatologist</button>
+                        <button class="filter-btn" data-filter="Neurologist">Neurologist</button>
+                    </div>
+                </div>
+                
+                <div class="doctors-list" id="doctors-list">
+                    <!-- Doctors will be populated here -->
+                     
+                </div>
+            </div>
+            
+            <!-- Sliding Profile Panel (Hidden by default) -->
+            <div class="doctor-profile-panel" id="doctorProfilePanel">
+                <div class="profile-header">
+                    <button class="back-btn" id="backBtn">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <div class="profile-placeholder" id="profilePlaceholder">
+                        <i class="fas fa-user-md"></i>
+                        <h3>Select a doctor to view profile</h3>
+                        <p>Click on any doctor from the list to see their details</p>
+                    </div>
+                </div>
+                <div class="doctor-profile" id="doctorProfile">
+                    <!-- Dynamic profile content -->
+                </div>
+            </div>
+            
+            <!-- Overlay -->
+            <div class="panel-overlay" id="panelOverlay"></div>
+        </div>
+    </div>
+</section>
+
+    <!-- Appointment Section -->
+    <section id="appointments" class="appointments">    
+        <div class="container">
+            <div class="section-header">
+                <h2>Book an Appointment</h2>
+                <p>Fill in the details below to schedule your visit</p>
+            </div>
+            <div class="appointment-container">
+                <div class="appointment-form">
+                    <form id="appointmentForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="patientName">Full Name</label>
+                                <input type="text" id="patientName" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="patientEmail">Email</label>
+                                <input type="email" id="patientEmail" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="patientPhone">Phone Number</label>
+                                <input type="tel" id="patientPhone" placeholder="Enter your phone number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="patientAge">Age</label>
+                                <input type="number" id="patientAge" placeholder="Enter your age" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="doctorSelect">Select Doctor</label>
+                                <input type="text" id = "pat-apt-form-docname"  placeholder="Select a doctor from above Panel" disabled=true required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="appointmentType">Appointment Type</label>
+                                <select id="appointmentType" required>
+                                    <option value="">Select type</option>
+                                    <option value="consultation">Consultation</option>
+                                    <option value="followup">Follow-up</option>
+                                    <option value="checkup">Regular Check-up</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="appointmentDate">Preferred Date</label>
+                                <input type="date" id="appointmentDate" disabled="true" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="appointmentTime">Preferred Time</label>
+                                <select id="appointmentTime" required disabled="true">
+                                    <option value="">Select time</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="symptoms">Symptoms/Reason for Visit</label>
+                            <textarea id="symptoms" placeholder="Describe your symptoms or reason for visit" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="PatientAptbt">
+                            <i class="fas fa-calendar-check"></i> Book Appointment
+                        </button>
+                    </form>
+                </div>
+                <div id="container-apt-calen">  
+                    <div class="compact-patient-calendar">
+                         <!-- Header -->
+                        <div class="calendar-header">
+                            <h3>Appointment Calendar</h3>
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="calendar-controls">
+                            <button class="nav-btn" onclick="previousMonth()" title="Previous">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div id="currentDate" class="current-date"></div>
+                            <button class="nav-btn" onclick="nextMonth()" title="Next">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+
+                        <div class="calendar-legend">
+                    
+                            <div class="legend-item">
+                                <span class="legend-box confirmed"></span>
+                                    Confirmed
+                            </div>
+
+                            <div class="legend-item">
+                                <span class="legend-box pending"></span>
+                                    Pending
+                                </div>
+
+                            <div class="legend-item">
+                                <span class="legend-box cancelled"></span>
+                                    Cancelled
+                            </div>
+                        </div>
+                        <!-- Calendar Grid -->
+                        <div id="calendarGrid" class="calendar-grid"></div>
+
+                        <!-- Selected Date Info -->
+                        <div id="selectedInfo" class="selected-info">
+                            <div class="no-selection">Click any date to view details</div>
+                        </div>
+                    </div>
+
+
+                    <div class="appointment-info">
+                        <h3>Why Choose DocCare?</h3>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Quick & Easy</h4>
+                                <p>Book appointments in less than 2 minutes</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <i class="fas fa-bell"></i>
+                            <div>
+                                <h4>Reminders</h4>
+                                <p>Get SMS and email reminders for appointments</p>
+                            </div>
+                    </div>
+                   
+                </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us for any queries or concerns</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>158, MM Road, Frazer Town. <br>Bengaluru Karnataka 560005</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 8123543785<br>+91 9876543234</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@doccare.com<br>support@doccare.com</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contactName">Name</label>
+                            <input type="text" id="contactName" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email</label>
+                            <input type="email" id="contactEmail" placeholder="Your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactSubject">Subject</label>
+                            <input type="text" id="contactSubject" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage">Message</label>
+                            <textarea id="contactMessage" placeholder="Your message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>DocCare</span>
+                    </div>
+                    <p>Your trusted partner in healthcare. Book appointments with the best doctors in your city.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#doctors">Doctors</a></li>
+                        <li><a href="#appointments">Book Appointment</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Cardiology</a></li>
+                        <li><a href="#">Neurology</a></li>
+                        <li><a href="#">Pediatrics</a></li>
+                        <li><a href="#">Orthopedics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DocCare. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Profile Slide Panel -->
+<div id="profilePanel" class="profile-panel">
+    <div class="panel-header">
+        <h2>My Profile</h2>
+        <div id="panel-container" style="display: flex; justify-content: space-between;">
+            <button id="closePanel">&times;</button>
+            <button id="logoutn" class="logout-btn">
+                <i class="fa fa-sign-out" ></i> &nbsp;Logout
+            </button>
+        </div>
+    </div>
+
+    <div class="panel-content">
+        <label>Name</label>
+        <input type="text" id="pName">
+
+        <label>Age</label>
+        <input type="number" id="pAge">
+
+        <label>Blood Group</label>
+        <input type="text" id="pBlood">
+
+        <label>Email</label>
+        <input type="email" id="pEmail">
+
+        <label>Phone</label>
+        <input type="text" id="pPhone">
+
+        <label>Gender</label>
+        <input type="text" id="pGender">
+
+        <label>Password</label>
+        <input type="password" id="pPassword">
+
+        <button id="saveProfile" class="save-btn">Save </button>
+        
+    </div>
+</div>
+    <script type="module" src="./Firebase.js"></script>
+    <script type="module" src="Patient.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</body>
+</html>
