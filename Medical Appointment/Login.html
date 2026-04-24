@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DocCare – Login</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="LoginStylesheet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <!-- (Optional) Favicon -->
+  <!-- <link rel="icon" href="favicon.ico" /> -->
+</head>
+<body>
+  <!-- Background shape -->
+   <div id="logo">
+    <i class="fas fa-heartbeat"></i>
+        <span>DocCare</span>
+  </div>
+  <div class="bg-decor"></div>
+
+  <main class="auth-wrapper">
+    <div class="auth-card">
+      <div class="brand">
+        <i class="fas fa-heartbeat"></i>
+        <span>DocCare</span>
+      </div>
+
+      <h1>Welcome back</h1>
+      <p class="subtitle">Sign in to continue to your dashboard</p>
+
+      <!-- Alerts -->
+      <div id="loginAlert" class="alert hidden"></div>
+
+      <form id="loginForm" novalidate>
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-with-icon">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="email" name="email" placeholder="you@doccare.com" required />
+          </div>
+          <small class="error" data-for="email" id="eerr"></small>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-with-icon">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" name="password" placeholder="••••••••" required minlength="6" />
+            <button type="button" class="password-toggle" aria-label="Show password">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <small class="error" data-for="password" id="perr"></small>
+        </div>
+
+        <!-- Role -->
+        <div class="form-group">
+          <label for="role">Sign in as</label>
+          <div class="role-grid" id="role">
+            <label class="role-option">
+              <input type="radio" name="role" value="Admin" data-quick="admin"/>
+              <div class="role-card">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin</span>
+              </div>
+            </label>
+            <label class="role-option">
+              <input type="radio" name="role" value="Doctor" data-quick="doctor"/>
+              <div class="role-card">
+                <i class="fas fa-user-md"></i>
+                <span>Doctor</span>
+              </div>
+            </label>
+            <label class="role-option">
+              <input type="radio" name="role" value="Patient"  data-quick="patient" checked />
+              <div class="role-card">
+                <i class="fas fa-user"></i>
+                <span>Patient</span>
+              </div>
+            </label>
+          </div>
+          <small class="error" data-for="role"></small>
+        </div>
+
+        <!-- Remember + Forgot -->
+        <div class="row-between">
+          <label class="checkbox">
+            <input type="checkbox" id="rememberMe" />
+            <span>Remember me</span>
+          </label>
+          <!-- Hook up later if you implement reset -->
+          <a class="link" href="#" id="forgotLink">Forgot password?</a>
+        </div>
+
+        <!-- Submit -->
+        <button class="btn btn-primary btn-full" type="submit">
+          <i class="fas fa-right-to-bracket"></i>
+          Sign in
+        </button>
+      </form>
+
+      <!-- Divider -->
+      <div class="divider"><span>or</span></div>
+
+      <!-- Quick test logins (optional shortcuts for demo) -->
+      <div class="quick-logins">
+        <button class="btn btn-outline" data-quick="Admin">
+          <i class="fas fa-user-shield"></i> Admin
+        </button>
+        <button class="btn btn-outline" data-quick="Doctor">
+          <i class="fas fa-user-md"></i> Doctor
+        </button>
+        <button class="btn btn-outline" data-quick="Patient">
+          <i class="fas fa-user"></i> Patient
+        </button>
+      </div>
+
+      <p class="foot-note">
+        Don’t have an patient account? <a class="link" href="Register.html">Register Here</a>
+      </p>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script type="module" src="./Loginscript.js"></script>
+  <script type="module" src="./Firebase.js"></script>
+  <!-- Add to your <head> -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
